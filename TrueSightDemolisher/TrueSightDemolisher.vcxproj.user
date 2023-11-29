@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <RemoteDebuggerCommand>C:\remotetemp\TrueSightDemolisher.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerCommandArguments>10944</RemoteDebuggerCommandArguments>
+    <RemoteDebuggerWorkingDirectory>C:\remotetemp</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>desktop-do124q7:4026</RemoteDebuggerServerName>
+    <DeploymentDirectory>C:\remotetemp</DeploymentDirectory>
+    <AdditionalFiles>
+    </AdditionalFiles>
+    <DebuggerFlavor>WindowsRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <RemoteDebuggerCommand>C:\remotetemp\TrueSightDemolisher.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerCommandArguments>12904</RemoteDebuggerCommandArguments>
+    <RemoteDebuggerWorkingDirectory>C:\remotetemp</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>desktop-do124q7:4026</RemoteDebuggerServerName>
+    <RemoteDebuggerDebuggerType>NativeOnly</RemoteDebuggerDebuggerType>
+    <DeploymentDirectory>C:\remotetemp</DeploymentDirectory>
+    <DebuggerFlavor>WindowsRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>
