@@ -1,7 +1,11 @@
 #pragma once
 
+#include <Windows.h>
+
+void RaiseError(const char* Message);
+
 //
-// Windows process privilege
+// Windows process privilege bit-fields
 //
 enum Pviliege {
 	SeUnsolicitedInputPrivilege = 1 << 0,
@@ -39,6 +43,5 @@ enum Pviliege {
 	SeIncreaseWorkingSetPrivilege = 1 << 33,
 	SeTimeZonePrivilege = 1 << 34,
 	SeCreateSymbolicLinkPrivilege = 1 << 35,
-	// new? is considered a sensitive privillege but not showing anywhere on ntoskrnl
 	SeDelegateSessionUserImpersonatePrivilege = 1 << 36
 };

@@ -1,18 +1,18 @@
-#include "ProcessFinder.h"
 
-ProcessFinder::ProcessFinder(IKernelReadWrite& Rw) : m_Rw(&Rw), m_ProcessListHead(0) {
+#include "Offsets.h"
+#include "Utils.h"
 
-	this->m_ProcessListHead = this->GetProcessListHead();
-}
+#include <Psapi.h>
+
 
 #define Rva2Address(Rva, Base) ((Rva) + reinterpret_cast<PBYTE>((Base)))
 
 static PVOID GetExportAddress(PVOID Base, const char* Name, IKernelReadWrite* Rw) {
-	
+
 	//
 	// Get export directory
 	//
-	
+
 	auto* dosHeader = reinterpret_cast<PIMAGE_DOS_HEADER>(Base);
 
 	LONG e_lfanew = 0;
@@ -33,28 +33,13 @@ static PVOID GetExportAddress(PVOID Base, const char* Name, IKernelReadWrite* Rw
 	PBYTE exportedNames = Rva2Address(exportDirectory.AddressOfNames, Base);
 	PBYTE exportAddresses = Rva2Address(exportDirectory.AddressOfFunctions, Base);
 
-	return nullptr;
-}
 
-static PVOID GetKernelBase() {
-
-	// cache calculation: kernel base address isn't bound to change unless we reboot
-
-	static PVOID cachedBaseAddress = nullptr;
-	if (cachedBaseAddress)
-		return cachedBaseAddress;
+	// TODO: finish
 
 	return nullptr;
 }
 
-PVOID ProcessFinder::GetProcessListHead() {
-	auto* kernelBase = GetKernelBase();
-	auto* processListHead = GetExportAddress(kernelBase, "PsActiveProcessHead", this->m_Rw);
-
-	return 0;
-}
-
-static UINT GetProcessIdOffset(IKernelReadWrite* Rw) {
+UINT GetProcessIdOffsetFromProcess(IKernelReadWrite* Rw) {
 
 	static UINT cachedOffset = 0;
 	if (cachedOffset != 0) {
@@ -78,16 +63,31 @@ static UINT GetProcessIdOffset(IKernelReadWrite* Rw) {
 
 	// compare first three bytes
 	if ((*reinterpret_cast<UINT*>(instructions.data()) & 0x00ffffff) != MovRaxRcx) {
-		// TODO handle failure
+		RaiseError("Failed to extract Process Id from PsGetProcessId");
 	}
 	UINT offset = *reinterpret_cast<UINT*>(instructions.data() + 3);
 	cachedOffset = offset;
 	return offset;
 }
 
-PVOID ProcessFinder::FindProcessById(DWORD ProcessId)
+UINT GetTokenOffsetFromProcess(IKernelReadWrite* Rw)
 {
-	return PVOID();
+	return 0;
 }
 
+PBYTE GetKernelBase() {
 
+	// why can't we have functools.cache :(
+	static PBYTE cachedAddress = nullptr;
+	if (cachedAddress) {
+		cachedAddress;
+	}
+
+	// the first driver is ntoskrnl
+
+	PVOID firstDriver = nullptr;
+	DWORD driversSize = 0;
+	EnumDeviceDrivers(&firstDriver, sizeof(PVOID), &driversSize);
+
+	return (PBYTE)firstDriver;
+}

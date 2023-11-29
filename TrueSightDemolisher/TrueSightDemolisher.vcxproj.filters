@@ -18,33 +18,21 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ElevatePrivileges.cpp">
+    <ClCompile Include="Offsets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProcessFinder.cpp">
+    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ElevatePrivileges.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="KernelReadWrite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProcessFinder.h">
+    <ClInclude Include="Offsets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Truesight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OffsetFinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelPointer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Privileges.h">
+    <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
