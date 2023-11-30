@@ -60,7 +60,7 @@ NT_STATUS __fastcall MapMemory(PVOID VirtualAddress, ULONG OutputLength, PVOID O
 Among the other IOCTLs you'll find:
  - (0x22E048) Recursive enumeration of a registry key, just because you can
  - (0x22E018) The ability to get the stack trace of all the system threads, if you need another KASLR leak
- - (See [this awesome project]([url](https://github.com/MaorSabag/TrueSightKiller))) Terminating _any_ process
+ - (See [this awesome project](https://github.com/MaorSabag/TrueSightKiller)) Terminating _any_ process
  - (0x22E04C) Opening _any_ existing file and setting it to be deleted on close (which seems interesting🙃)
  - Possibly other things
 
