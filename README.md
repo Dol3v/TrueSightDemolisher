@@ -68,7 +68,7 @@ Among the other IOCTLs you'll find:
 Although the driver is clearly not written with security in mind, you still need to be in `BUILTIN\Administrators` to actually send IOCTLs to this thing.
 
 ## Thanks
-A lot of thanks for Maor Sabag's [TrueSightKiller](https://github.com/MaorSabag/TrueSightKiller), for revealing this gem of a driver🙃
+A lot of thanks for Maor Sabag's [TrueSightKiller](https://github.com/MaorSabag/TrueSightKiller), for revealing this gem of a driver😊
 
 ## TODOs and Technical Details
 Techincally, this is pretty standard - we use the R/W primitive to go over the process list, find our process and change our privileges to include `SeDebugPrivilege`.
